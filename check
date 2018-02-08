@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker ps
+docker stack inspect myhero
+docker network inspect myhero_default
+docker service ls
+

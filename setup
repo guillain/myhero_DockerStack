@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+for d in myhero_data myhero_ernst myhero_app myhero_web myhero_ui myhero_tropo myhero_spark; do
+  docker pull hpreston/$d
+done
+docker pull matteocollina/mosca
+
+docker swarm init
+
