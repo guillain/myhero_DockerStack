@@ -31,6 +31,21 @@ The docker containers used are
 * Tropo App - [hpreston/myhero_tropo](https://hub.docker.com/r/hpreston/myhero_tropo)
 * Mosca - [matteocollina/mosca](https://hub.docker.com/r/matteocollina/mosca)
 
+The services are stacked as followed
+
+``` bash
+# docker service ls
+ID            NAME          MODE        REPLICAS  IMAGE
+55sw6ikxdg00  myhero_data   replicated  3/3       hpreston/myhero_data:latest
+jua8uv15qmd2  myhero_ernst  replicated  2/2       hpreston/myhero_ernst:latest
+l42dlthi94df  myhero_app    replicated  3/3       hpreston/myhero_app:latest
+qpjw5dkwet55  myhero_web    replicated  1/1       hpreston/myhero_web:latest
+rawar1xhl6m5  myhero_mosca  replicated  2/2       matteocollina/mosca:latest
+rxi7s21q15g2  myhero_tropo  replicated  1/1       hpreston/myhero_tropo:latest
+uob06vjbsq2a  myhero_ui     replicated  1/1       hpreston/myhero_ui:latest
+xjgsa12lblr5  myhero_spark  replicated  1/1       hpreston/myhero_spark:latest
+```
+
 # Environment 
 
 ## Configuration
@@ -43,6 +58,16 @@ The docker containers used are
 * `./setup`
 
 # Basic Usage
+
+## Start
+
+* `./start`
+
+## Stop
+
+* `./stop`
+
+## Browsing
 
 * http://PUBLIC IP:10301 (web)
 * http://PUBLIC IP:10401 (ui)
@@ -57,6 +82,8 @@ Thanks to check on my hero portal:
 * https://hub.docker.com/u/hpreston/
 
 # Validation
+
+## Service requests from the host
 
 * Data
   * `curl http://localhost:10101/hero_list`
@@ -87,19 +114,8 @@ These newer APIs require authentication as well as support more features
 * Get current results
   * `curl -X GET -H "key: APP AUTH KEY" http://localhost:5000/results`
 
-# Services
+## Docker services
 
-``` bash
-# docker service ls
-ID            NAME          MODE        REPLICAS  IMAGE
-55sw6ikxdg00  myhero_data   replicated  3/3       hpreston/myhero_data:latest
-jua8uv15qmd2  myhero_ernst  replicated  2/2       hpreston/myhero_ernst:latest
-l42dlthi94df  myhero_app    replicated  3/3       hpreston/myhero_app:latest
-qpjw5dkwet55  myhero_web    replicated  1/1       hpreston/myhero_web:latest
-rawar1xhl6m5  myhero_mosca  replicated  2/2       matteocollina/mosca:latest
-rxi7s21q15g2  myhero_tropo  replicated  1/1       hpreston/myhero_tropo:latest
-uob06vjbsq2a  myhero_ui     replicated  1/1       hpreston/myhero_ui:latest
-xjgsa12lblr5  myhero_spark  replicated  1/1       hpreston/myhero_spark:latest
-```
+* `./check`
 
 
