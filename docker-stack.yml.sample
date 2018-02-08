@@ -1,5 +1,19 @@
-# docker network create -d overlay --subnet=10.1.0.0/16 --gateway=10.1.0.1 myhero_default
-# docker stack deploy --compose-file docker-stack.yml myhero
+# Docker Stack Sample
+# * myhero configuration for service docker configuration
+# * After configuration, process this conf file:
+#   * Init : docker swarm init
+#   * Start: docker stack deploy --compose-file docker-stack.yml myhero
+#   * Stop : docker stack rm myhero
+# * Host port usage
+#   * 10101: data
+#   * 10201: app
+#   * 10301: web
+#   * 10401: ui
+#   * 10501: spark
+#   * 10601: tropo
+#   * 10701: ernst
+#   * 10801: mosca
+#
 version: '3.0'
 
 networks:
